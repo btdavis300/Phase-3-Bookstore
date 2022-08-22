@@ -13,3 +13,5 @@ User Stories:
 -As a user, I can post a review for a book.
 
 -As an Admin, I can add a book to the collection, update or delete an exisiting book.
+
+![wireframe](https://user-images.githubusercontent.com/100324379/186005150-0dbe437a-fdd2-4f20-828c-222e3544fbca.png)
