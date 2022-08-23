@@ -1,3 +1,7 @@
+body {
+  color: rgb(158, 172, 161)
+}
+
 .searchbar {
   text-align: center;
 }
@@ -12,7 +16,7 @@
 .topnav a {
   float: left;
   display: block;
-  color: black;
+  color: rgb(158, 172, 161);
   text-align: center;
   padding: 14px 48px;
   text-decoration: none;
@@ -63,4 +67,11 @@
   .topnav input[type=text] {
     border: 1px solid #ccc;
   }
+}
+
+
+#book-store-name {
+  text-align: center;
+  font-size: 8em;
+  padding: 10px;
 }

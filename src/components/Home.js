@@ -1,9 +1,18 @@
 import React from 'react'
+import BookCard from './BookCard'
 
-function Home() {
+function Home({ books }) {
+
+    const bookCard = books.map((book) => {
+        return (
+            <BookCard book={book} key={book.id} />
+        )
+    })
+
     return (
         <div>
-            <p>This is the Home Page. This will be filled with books and eye-grabbing information.</p>
+            <h1 id="book-store-name">Flatty's Books</h1>
+            {bookCard}
         </div>
     )
 }
