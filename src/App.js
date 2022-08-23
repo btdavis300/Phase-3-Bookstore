@@ -26,7 +26,7 @@ function App() {
   
   return (
     <div className="App">
-      <NavBar />
+      <NavBar authorized={authorized} setAuthorized={setAuthorized}/>
       <div id="nav">
         <Switch>
           <Route exact path="/">
