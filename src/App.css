@@ -91,9 +91,18 @@ body {
   margin-top: 40px;
   display: flex;
   justify-content: space-evenly;
+  flex-wrap: wrap;
 }
 
 #book-card {
   width: 150px;
   padding: 10px;
+  cursor: pointer;
+}
+
+#card-image:hover {
+  position: relative;
+  top: -3px;
+  opacity: 50%;
+  cursor: pointer;
 }
