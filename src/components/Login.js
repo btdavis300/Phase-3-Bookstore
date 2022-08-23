@@ -7,14 +7,6 @@ function Login({authorized, setAuthorized}){
 
     let history = useHistory();
 
-
-
-
-    const adminUser = {
-        email: 'admin@example.com',
-        password: 'admin123'
-      }
-
     const [details, setDetails] = useState({name: "", email: "", password: "",});
     const [user, setUser] = useState({name: "", email: ""});
     const [error, setError] = useState("")
@@ -57,7 +49,6 @@ function Login({authorized, setAuthorized}){
       }
 
   return (
-    <div>
     <form onSubmit={handleSubmit}>
         <div className="form-inner">
             <h2>Login</h2>
@@ -73,18 +64,6 @@ function Login({authorized, setAuthorized}){
             < input type="submit" value="LOGIN" />
         </div>
     </form>
-
-    {/* {(user.email != "") ? (<Route exact path="/books">
-            <Books />
-          </Route>
-      ) : (
-        <Route exact path="/login">
-            <Login />
-            </Route>
-      )} */}
-
-      {/* {(user.email !== "") ? (<Navigate replace to="/"/>) : (<h2>NotLogged</h2>)} */}
-    </div>
     
     
   )
