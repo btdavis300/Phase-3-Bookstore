@@ -9,7 +9,7 @@ function App() {
   const [books, setBooks] = useState([]);
 
   useEffect(() => {
-    fetch("http://localhost:9292/")
+    fetch("http://localhost:9292/all")
       .then(r => r.json())
       .then(bookArr => setBooks(bookArr))
   }, [])

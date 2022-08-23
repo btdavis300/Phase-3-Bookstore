@@ -87,12 +87,22 @@ body {
   justify-content: center;
 }
 
-#book-card-container {
-  margin-top: 40px;
+.books-card-box {
+  display: flex;
+  justify-content: center;
+}
+
+.book-card-container {
+  background-color: rgba(253, 249, 224, 0.283);
   display: flex;
   justify-content: space-evenly;
-  flex-wrap: wrap;
+  flex-wrap: nowrap;
+  width: 90%;
+  overflow-x: scroll;
+  padding-left: 20px;
+  padding-right: 20px;
 }
+
 
 #book-card {
   width: 150px;
@@ -105,4 +115,9 @@ body {
   top: -3px;
   opacity: 50%;
   cursor: pointer;
+}
+
+.home-page-label {
+  padding: 10px;
+  margin-left: 20px;
 }

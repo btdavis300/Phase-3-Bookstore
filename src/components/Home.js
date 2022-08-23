@@ -1,6 +1,7 @@
 import React from 'react'
 import BookCard from './BookCard'
 
+
 function Home({ books }) {
 
     const bookCard = books.map((book) => {
@@ -16,8 +17,17 @@ function Home({ books }) {
                     <h1 id="book-store-name">FLATTY'S BOOKS</h1>
                 </div>
             </div>
-            <div id="book-card-container">
-                {bookCard}
+            <h2 className="home-page-label"><em>Popular Books</em></h2>
+            <div className="books-card-box">
+                <div className="book-card-container">
+                    {bookCard}
+                </div>
+            </div>
+            <h2 className="home-page-label"><em>Newest Books</em></h2>
+            <div className="books-card-box">
+                <div className="book-card-container">
+                    {bookCard}
+                </div>
             </div>
         </div>
     )
