@@ -1,4 +1,4 @@
-import React, {useState} from 'react'
+import React, {useState, useEffect} from 'react'
 import { useHistory } from "react-router-dom";
 import Books from './Books';
 import Home from './Home';
@@ -6,6 +6,9 @@ import Home from './Home';
 function Login({authorized, setAuthorized}){
 
     let history = useHistory();
+
+
+
 
     const adminUser = {
         email: 'admin@example.com',
@@ -15,6 +18,15 @@ function Login({authorized, setAuthorized}){
     const [details, setDetails] = useState({name: "", email: "", password: "",});
     const [user, setUser] = useState({name: "", email: ""});
     const [error, setError] = useState("")
+    const [human, setHuman] = useState([])
+
+    useEffect(() => {
+        fetch("http://localhost:9292/users")
+        .then((r) => r.json())
+      .then((humanArr) => setHuman(humanArr));
+
+    },[])
+    console.log(human);
 
     
 
@@ -27,7 +39,7 @@ function Login({authorized, setAuthorized}){
     const Loggedin = details => {
         console.log(details);
     
-        if(details.email === adminUser.email && details.password === adminUser.password){
+        if(human.find(c => c.email === details.email) && human.find(p => p.password === details.password)){
           console.log("logged in");
           setAuthorized(true);
           history.push('/books')
