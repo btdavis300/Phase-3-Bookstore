@@ -70,8 +70,30 @@ body {
 }
 
 
+
 #book-store-name {
   text-align: center;
   font-size: 8em;
+  padding: 10px;
+}
+
+#title-container {
+  width: 95%;
+  border-bottom: solid rgb(158, 163, 159);
+}
+
+#title-box {
+  display: flex;
+  justify-content: center;
+}
+
+#book-card-container {
+  margin-top: 40px;
+  display: flex;
+  justify-content: space-evenly;
+}
+
+#book-card {
+  width: 150px;
   padding: 10px;
 }

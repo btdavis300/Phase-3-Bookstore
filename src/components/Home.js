@@ -11,8 +11,14 @@ function Home({ books }) {
 
     return (
         <div>
-            <h1 id="book-store-name">Flatty's Books</h1>
-            {bookCard}
+            <div id="title-box">
+                <div id="title-container">
+                    <h1 id="book-store-name">FLATTY'S BOOKS</h1>
+                </div>
+            </div>
+            <div id="book-card-container">
+                {bookCard}
+            </div>
         </div>
     )
 }

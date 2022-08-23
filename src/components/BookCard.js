@@ -8,8 +8,8 @@ function BookCard({ book }) {
             <img src={image} alt="book-cover" width="150" height="225"></img>
             <div id="book-card-description">
                 <h3>{name}</h3>
-                <h4>By: {author}</h4>
-                <p>${price}.00</p>
+                <h5>By: {author}</h5>
+                <h6>${price}.00</h6>
             </div>
         </div>
     )
