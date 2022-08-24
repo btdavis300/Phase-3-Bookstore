@@ -2,15 +2,18 @@ import React, {useState, useEffect} from 'react'
 import { useHistory } from "react-router-dom";
 import Books from './Books';
 import Home from './Home';
+import './Login.css'
 
-function Login({authorized, setAuthorized}){
+function Login({userAuthorized, setUserAuthorized, setAdminAuthorized}){
 
     let history = useHistory();
 
     const [details, setDetails] = useState({name: "", email: "", password: "",});
-    const [user, setUser] = useState({name: "", email: ""});
     const [error, setError] = useState("")
     const [human, setHuman] = useState([])
+    const [isUser, setIsUser] = useState(true);
+    const [admin, setAdmin] = useState([])
+
 
     useEffect(() => {
         fetch("http://localhost:9292/users")
@@ -18,40 +21,49 @@ function Login({authorized, setAuthorized}){
       .then((humanArr) => setHuman(humanArr));
 
     },[])
-    console.log(human);
 
-    
+    useEffect(() => {
+      fetch("http://localhost:9292/admins")
+      .then((r) => r.json())
+    .then((adminArr) => setAdmin(adminArr));
+
+  },[])
 
     const handleSubmit = e =>{
         e.preventDefault();
-
-        Loggedin(details);
+        {isUser ? Loggedin(details) : AdminLogin(details)};
     }
 
     const Loggedin = details => {
-        console.log(details);
-    
-        if(human.find(c => c.email === details.email) && human.find(p => p.password === details.password)){
-          console.log("logged in");
-          setAuthorized(true);
+        if(human.find(c => c.email === details.email)  && human.find(p => p.password === details.password) ){
+          setUserAuthorized(true);
           history.push('/books')
-          setUser({
-            name: details.name,
-            email: details.email
-            
-          }
-          );
-          
-        } else{
-          console.log("Details not match")
+        }else{
+          setError("Details not match")
+        }
+      }
+
+      const AdminLogin = details => {
+        if(admin.find(c => c.email === details.email)  && admin.find(p => p.password === details.password) ){
+          setUserAuthorized(true);
+          setAdminAuthorized(true);
+          history.push('/')
+        }else{
           setError("Details not match")
         }
       }
 
   return (
+    <div className="main">
     <form onSubmit={handleSubmit}>
         <div className="form-inner">
             <h2>Login</h2>
+            <label className='switch'>
+              <input onClick={(e)=> setIsUser(!isUser)} type="checkbox"></input>
+              <span className='slider round'></span>
+              {isUser ? <h2>User</h2> : <h2>Admin</h2>}
+
+            </label>
             {(error !== "") ? (<div className="error">{error}</div>) : ""}
             <div className="form-group">
                 <label htmlFor="email">Email: </label>
@@ -64,6 +76,7 @@ function Login({authorized, setAuthorized}){
             < input type="submit" value="LOGIN" />
         </div>
     </form>
+    </div>
     
     
   )

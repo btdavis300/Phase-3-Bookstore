@@ -2,12 +2,13 @@ import React, {useState} from 'react'
 import { useHistory } from "react-router-dom";
 
 function Signup() {
-    const [details, setDetails] = useState({name: "", email: "", password: "",});
+    const [details, setDetails] = useState({name: "", email: "", password: "",retype_password:""});
     const [error, setError] = useState("")
     let history = useHistory();
 
     const handleSubmit = e =>{
         e.preventDefault();
+        if(details.password === details.retype_password){
         fetch("http://localhost:9292/users/new_user", {
       method: "POST",
       headers: {
@@ -20,7 +21,9 @@ function Signup() {
       }),
     })
     history.push('/login')
-
+  }else{
+    setError("Password Donot Match");
+  }
     }
 
 
@@ -41,6 +44,11 @@ function Signup() {
                 <label htmlFor="password">Password: </label>
                 <input type="password" name="password" id="password" onChange={e => setDetails({...details, password: e.target.value})} value={details.password}  />
             </div>
+            <div className="form-group">
+                <label htmlFor="retype_password">Retype-Password: </label>
+                <input type="password" name="retype_password" id="retype_password" onChange={e => setDetails({...details, retype_password: e.target.value})} value={details.retype_password}  />
+            </div>
+            <p>By creating an account you agree to our <a href="#">Terms & Privacy</a>.</p>
             < input type="submit" value="SIGNUP" />
         </div>
     </form>
