@@ -30,7 +30,9 @@ function Signup() {
   return (
     <form onSubmit={handleSubmit}>
         <div className="form-inner">
+          <div className="header">
             <h2>SignUp</h2>
+            </div>
             {(error != "") ? (<div className="error">{error}</div>) : ""}
             <div className="form-group">
                 <label htmlFor="name">Name: </label>

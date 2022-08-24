@@ -37,13 +37,31 @@ form .form-inner{
     z-index: 2;     
 }
 
+form .form-inner .header h2{
+    color: #888;
+    font-size: 28px;
+    font-weight: 500;
+    margin-bottom: 0px;
+}
+
 form .form-inner h2{
     color: #888;
     font-size: 28px;
     font-weight: 500;
-    margin-bottom: 30px;
-
+    margin-bottom: -30px;
+    margin-left: 100px;
 }
+
+form .form-inner h3{
+    color: rgb(250, 167, 129);
+    font-size: 18px;
+    font-weight: 500;
+    margin-top: -20px;
+    margin-left: 305px;
+}
+
+
+
 
 form .form-inner .form-group{
     display: block;
@@ -95,11 +113,11 @@ form .form-inner input[type="submit"]:hover{
 
 .switch {
     position: relative;
-    top: -65px;
-    left: 80%;
+    top: -50px;
+    left: -10%;
     display: inline-block;
-    width: 60px;
-    height: 34px;
+    width: 50px;
+    height: 24px;
   }
 
   .switch input {
@@ -115,7 +133,7 @@ form .form-inner input[type="submit"]:hover{
     left: 0;
     right: 0;
     bottom: 0;
-    background-color: rgb(113, 243, 124);
+    background-color: rgb(111, 245, 178);
     -webkit-transition: .4s;
     transition: .4s;
   }
@@ -123,8 +141,8 @@ form .form-inner input[type="submit"]:hover{
   .slider:before {
     position: absolute;
     content: "";
-    height: 26px;
-    width: 26px;
+    height: 18px;
+    width: 18px;
     left: 4px;
     bottom: 4px;
     background-color: white;

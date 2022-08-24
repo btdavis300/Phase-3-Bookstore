@@ -61,7 +61,7 @@ function Login({userAuthorized, setUserAuthorized, setAdminAuthorized}){
             <label className='switch'>
               <input onClick={(e)=> setIsUser(!isUser)} type="checkbox"></input>
               <span className='slider round'></span>
-              {isUser ? <h2>User</h2> : <h2>Admin</h2>}
+              {isUser ? <h3>User</h3> : <h3>Admin</h3>}
 
             </label>
             {(error !== "") ? (<div className="error">{error}</div>) : ""}
