@@ -1,12 +1,32 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 import BookCard from './BookCard'
 
 
-function Home({ books }) {
+function Home() {
+    const [newBooks, setNewBooks] = useState([])
+    const [popularBooks, setPopularBooks] = useState([])
 
-    const bookCard = books.map((book) => {
+    useEffect(() => {
+        fetch("http://localhost:9292/books/newest_books")
+            .then(r => r.json())
+            .then(bookArr => setNewBooks(bookArr))
+    }, [])
+
+    useEffect(() => {
+        fetch("http://localhost:9292/books/popular_books")
+            .then(r => r.json())
+            .then(bookArr => setPopularBooks(bookArr))
+    }, [])
+
+    const newBookCard = newBooks.map((book) => {
         return (
-            <BookCard book={book} key={book.id} />
+            <BookCard book={book} key={`newBook${book.id}`} />
+        )
+    })
+
+    const popularBookCard = popularBooks.map((book) => {
+        return (
+            <BookCard book={book} key={`popularBook${book.id}`} />
         )
     })
 
@@ -20,13 +40,13 @@ function Home({ books }) {
             <h2 className="home-page-label"><em>Popular Books</em></h2>
             <div className="books-card-box">
                 <div className="book-card-container">
-                    {bookCard}
+                    {popularBookCard}
                 </div>
             </div>
             <h2 className="home-page-label"><em>Newest Books</em></h2>
             <div className="books-card-box">
                 <div className="book-card-container">
-                    {bookCard}
+                    {newBookCard}
                 </div>
             </div>
         </div>
