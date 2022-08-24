@@ -164,7 +164,7 @@ body {
   font-size: 20px;
 }
 
-#sub-category-nav {
+.sub-category-nav {
   display: flex;
   flex-direction: row;
   border: solid black;
