@@ -12,6 +12,9 @@ function BookCard({ book }) {
                 <h6>${price}.00</h6>
             </div>
         </div>
+
+
+
     )
 }
 
