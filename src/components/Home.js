@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react'
 import BookCard from './BookCard'
 
 
-function Home() {
+function Home({ onHandleDisplay }) {
     const [newBooks, setNewBooks] = useState([])
     const [popularBooks, setPopularBooks] = useState([])
 
@@ -20,13 +20,13 @@ function Home() {
 
     const newBookCard = newBooks.map((book) => {
         return (
-            <BookCard book={book} key={`newBook${book.id}`} />
+            <BookCard book={book} key={`newBook${book.id}`} onHandleDisplay={onHandleDisplay} />
         )
     })
 
     const popularBookCard = popularBooks.map((book) => {
         return (
-            <BookCard book={book} key={`popularBook${book.id}`} />
+            <BookCard book={book} key={`popularBook${book.id}`} onHandleDisplay={onHandleDisplay} />
         )
     })
 

@@ -6,6 +6,7 @@ import Home from './components/Home';
 import Books from './components/Books';
 import Login from './components/Login';
 import Signup from './components/Signup';
+import BookDisplay from './components/BookDisplay';
 
 function App() {
 
@@ -14,7 +15,14 @@ function App() {
   // const [books, setBooks] = useState([]);
   const [userAuthorized, setUserAuthorized] = useState(false);
   const [adminAuthorized, setAdminAuthorized] = useState(false);
+  const [currentBook, setCurrentBook] = useState({})
+  const [showCurrentBook, setShowCurrentBook] = useState(false);
 
+
+  function HandleDisplay(clickedBook) {
+    setCurrentBook(clickedBook)
+    setShowCurrentBook((showCurrentBook) => !showCurrentBook)
+  }
 
   // useEffect(() => {
   //   fetch("http://localhost:9292/all")
@@ -27,14 +35,24 @@ function App() {
 
   return (
     <div className="App">
-      <NavBar userAuthorized={userAuthorized} setUserAuthorized={setUserAuthorized} adminAuthorized={adminAuthorized} setAdminAuthorized={setAdminAuthorized} />
+      <NavBar
+        userAuthorized={userAuthorized}
+        setUserAuthorized={setUserAuthorized}
+        adminAuthorized={adminAuthorized}
+        setAdminAuthorized={setAdminAuthorized}
+        setShowCurrentBook={setShowCurrentBook}
+      />
       <div id="nav">
         <Switch>
           <Route exact path="/">
-            <Home />
+            {showCurrentBook ?
+              <BookDisplay book={currentBook} /> :
+              <Home onHandleDisplay={HandleDisplay} />}
           </Route>
           <Route exact path="/books">
-            <Books userAuthorized={userAuthorized} />
+            {showCurrentBook ?
+              <BookDisplay book={currentBook} /> :
+              <Books userAuthorized={userAuthorized} onHandleDisplay={HandleDisplay} />}
           </Route>
 
           <Route exact path="/login">
