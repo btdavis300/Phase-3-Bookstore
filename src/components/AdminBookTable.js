@@ -12,7 +12,7 @@ function AdminBookTable({ book }) {
                 <td>{book.price}</td>
                 <td>{book.created_at}</td>
                 <td>{book.updated_at}</td>
-                <td><a href={book.image}>{book.image}</a></td>
+                <td><a href={book.image}>Image Link</a></td>
                 <td>{book.description}</td>
             </tr>
         </>
