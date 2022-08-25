@@ -47,7 +47,7 @@ function Login({ userAuthorized, setUserAuthorized, setAdminAuthorized }) {
     if (admin.find(c => c.email === details.email) && admin.find(p => p.password === details.password)) {
       setUserAuthorized(true);
       setAdminAuthorized(true);
-      history.push('/')
+      history.push('/admin')
     } else {
       setError("Details do not match")
     }

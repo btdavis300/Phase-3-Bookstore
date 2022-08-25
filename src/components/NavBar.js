@@ -13,7 +13,7 @@ function NavBar({ userAuthorized, setUserAuthorized, setAdminAuthorized, adminAu
 
     return (
         <div className="topnav">
-            {adminAuthorized ? <Link onClick={() => setShowCurrentBook(false)} to="/">Admin</Link> : <Link onClick={() => setShowCurrentBook(false)} to="/">Home</Link>}
+            {adminAuthorized ? <Link onClick={() => setShowCurrentBook(false)} to="/admin">Admin</Link> : <Link onClick={() => setShowCurrentBook(false)} to="/">Home</Link>}
             {adminAuthorized ? <Link onClick={() => setShowCurrentBook(false)} to="/Books">User's View</Link> : <Link onClick={() => setShowCurrentBook(false)} to="/Books">Books</Link>}
             {userAuthorized ? (<Link to="/" onClick={handleOnClick}>Logout</Link>) : (
                 <div>

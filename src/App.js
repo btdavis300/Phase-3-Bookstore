@@ -1,18 +1,19 @@
 import './App.css';
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Switch, Route } from "react-router-dom";
 import NavBar from './components/NavBar';
 import Home from './components/Home';
 import Books from './components/Books';
 import Login from './components/Login';
 import Signup from './components/Signup';
+import Admin from './components/Admin';
 import BookDisplay from './components/BookDisplay';
 
 function App() {
 
 
 
-  // const [books, setBooks] = useState([]);
+  const [books, setBooks] = useState([]);
   const [userAuthorized, setUserAuthorized] = useState(false);
   const [adminAuthorized, setAdminAuthorized] = useState(false);
   const [currentBook, setCurrentBook] = useState({})
@@ -24,14 +25,11 @@ function App() {
     setShowCurrentBook((showCurrentBook) => !showCurrentBook)
   }
 
-  // useEffect(() => {
-  //   fetch("http://localhost:9292/all")
-  //     .then(r => r.json())
-  //     .then(bookArr => setBooks(bookArr))
-  // }, [])
-
-  // console.log(books)
-
+  useEffect(() => {
+    fetch("http://localhost:9292/all")
+      .then(r => r.json())
+      .then(bookArr => setBooks(bookArr))
+  }, [])
 
   return (
     <div className="App">
@@ -41,6 +39,7 @@ function App() {
         adminAuthorized={adminAuthorized}
         setAdminAuthorized={setAdminAuthorized}
         setShowCurrentBook={setShowCurrentBook}
+
       />
       <div id="nav">
         <Switch>
@@ -48,6 +47,9 @@ function App() {
             {showCurrentBook ?
               <BookDisplay book={currentBook} /> :
               <Home onHandleDisplay={HandleDisplay} />}
+          </Route>
+          <Route exact path="/admin">
+            <Admin books={books} />
           </Route>
           <Route exact path="/books">
             {showCurrentBook ?
