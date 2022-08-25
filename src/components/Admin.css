@@ -70,7 +70,14 @@ tr:nth-child(even) {
     cursor: pointer;
 }
 
-#book-id :hover {
+tr {
     cursor: pointer;
+}
+
+.book-row {
+    background-color: rgba(193, 70, 70, 0.316);
+}
+
+#book-headers {
     background-color: rgba(253, 249, 224);
 }
