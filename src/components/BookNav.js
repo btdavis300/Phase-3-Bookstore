@@ -1,4 +1,5 @@
-import React from 'react'
+import React,{useState} from 'react'
+import BookCard from './BookCard'
 import './BookNav.css'
 
 function BookNav() {
