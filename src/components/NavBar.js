@@ -2,26 +2,27 @@ import React from 'react'
 import Search from './Search';
 import { Link } from "react-router-dom";
 
-function NavBar({userAuthorized, setUserAuthorized, setAdminAuthorized, adminAuthorized}) {
+function NavBar({ userAuthorized, setUserAuthorized, setAdminAuthorized, adminAuthorized, setShowCurrentBook }) {
 
     const handleOnClick = () => {
         setUserAuthorized(false);
         setAdminAuthorized(false);
+        setShowCurrentBook(false);
     }
 
 
     return (
         <div className="topnav">
-            {adminAuthorized ? <Link to="/">Admin</Link> : <Link to="/">Home</Link>}
-            {adminAuthorized ? <Link to="/Books">User's View</Link> : <Link to="/Books">Books</Link>}
-            {userAuthorized ?  ( <Link to="/" onClick={handleOnClick}>Logout</Link>): (
-            <div>
-                <Link to="/login">Log In</Link>
-                <Link to="/signup">Sign Up</Link>
+            {adminAuthorized ? <Link onClick={() => setShowCurrentBook(false)} to="/">Admin</Link> : <Link onClick={() => setShowCurrentBook(false)} to="/">Home</Link>}
+            {adminAuthorized ? <Link onClick={() => setShowCurrentBook(false)} to="/Books">User's View</Link> : <Link onClick={() => setShowCurrentBook(false)} to="/Books">Books</Link>}
+            {userAuthorized ? (<Link to="/" onClick={handleOnClick}>Logout</Link>) : (
+                <div>
+                    <Link to="/login">Log In</Link>
+                    <Link to="/signup">Sign Up</Link>
                 </div>
-                
-                )  }
-            
+
+            )}
+
             <Search />
         </div>
     )
