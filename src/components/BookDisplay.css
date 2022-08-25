@@ -21,6 +21,11 @@
     justify-content: space-evenly;
 }
 
+#book-display-left-details {
+    padding: 10px;
+    box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.502);
+}
+
 #book-display-right-details {
     display: flex;
     flex-direction: column;
@@ -38,4 +43,15 @@
 
 #right-buttom-detail-display {
     width: 500px;
+}
+
+#book-display-price {
+    color: black;
+}
+
+#add-to-cart {
+    background-color: bisque;
+    font-size: 16px;
+    padding: 10px;
+    margin-left: 41px;
 }
