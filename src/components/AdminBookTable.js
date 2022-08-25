@@ -4,6 +4,7 @@ function AdminBookTable({ book }) {
     return (
         <>
             <tr>
+                <td><input type="checkbox" id={book.id} value={book.id} /> &nbsp; </td>
                 <td>{book.id}</td>
                 <td>{book.name}</td>
                 <td>{book.author}</td>

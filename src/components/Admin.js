@@ -9,16 +9,29 @@ function Admin({ books }) {
         )
     })
 
+    function handleUpdate() {
+        console.log("I am updated.")
+    }
+
+    function handleAdd() {
+        console.log("I am added.")
+    }
+
+    function handleDelete() {
+        console.log("I am deleted.")
+    }
+
     return (
         <div id="table-box">
             <div id="admin-button-container">
-                <button className="admin-button">Update Book</button>
-                <button className="admin-button">Add Book</button>
-                <button className="admin-button">Delete Book</button>
+                <button className="admin-button" onClick={handleUpdate}>Update Price</button>
+                <button className="admin-button" onClick={handleAdd}>Add Book</button>
+                <button className="admin-button" onClick={handleDelete}>Delete Book</button>
             </div>
             <div id="table-container">
                 <table>
                     <tr>
+                        <th></th>
                         <th id="id-column">Book ID</th>
                         <th>Title</th>
                         <th>Author</th>

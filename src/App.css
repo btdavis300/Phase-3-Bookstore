@@ -8,6 +8,12 @@ body {
   text-align: center;
 }
 
+#store-intro {
+  width: 700px;
+  margin-bottom: 10px;
+  text-align: center;
+}
+
 .topnav {
   overflow: hidden;
   background-color: rgba(253, 249, 224, 0.859);
@@ -82,6 +88,9 @@ body {
 #title-container {
   width: 95%;
   border-bottom: solid rgb(158, 163, 159);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 #title-box {

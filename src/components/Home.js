@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react'
 import BookCard from './BookCard'
 
 
-function Home({ onHandleDisplay }) {
+function Home({ onHandleDisplay, userAuthorized }) {
     const [newBooks, setNewBooks] = useState([])
     const [popularBooks, setPopularBooks] = useState([])
 
@@ -34,7 +34,14 @@ function Home({ onHandleDisplay }) {
         <div>
             <div id="title-box">
                 <div id="title-container">
-                    <h1 id="book-store-name">FLATTY'S BOOKS</h1>
+                    <div>
+                        <h1 id="book-store-name">FLATTY'S BOOKS</h1>
+                    </div>
+                    {userAuthorized ? null :
+                        <div id="store-intro">
+                            <p>Welcome to Flatty's Books, an exclusive online membership book collection, curatated by Flatty himself! Create an account to gain access to his entire collection.</p>
+                        </div>
+                    }
                 </div>
             </div>
             <h2 className="home-page-label"><em>Popular Books</em></h2>

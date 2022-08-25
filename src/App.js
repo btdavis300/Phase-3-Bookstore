@@ -46,7 +46,7 @@ function App() {
           <Route exact path="/">
             {showCurrentBook ?
               <BookDisplay book={currentBook} /> :
-              <Home onHandleDisplay={HandleDisplay} />}
+              <Home onHandleDisplay={HandleDisplay} userAuthorized={userAuthorized} />}
           </Route>
           <Route exact path="/admin">
             <Admin books={books} />
