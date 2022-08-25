@@ -1,17 +1,18 @@
 import React, { useState } from 'react'
 import './Admin.css'
 
-function AdminBookTable({ book }) {
+function AdminBookTable({ book, selectedBook, setSelectedBook }) {
     const [clicked, setClicked] = useState(false)
-    const [bookID, setBookID] = useState(0)
+
     function handleClick() {
         setClicked((clicked) => !clicked);
-        setBookID(book.id)
-        console.log(bookID)
+        setSelectedBook(book)
+        console.log(selectedBook)
     }
 
     return (
         <>
+
             <tr>
                 <td onClick={handleClick} className={clicked ? 'book-row' : ''}>{book.id}</td>
                 <td onClick={handleClick} className={clicked ? 'book-row' : ''}>{book.name}</td>
