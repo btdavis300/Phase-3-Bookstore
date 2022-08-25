@@ -11,6 +11,11 @@ function Admin({ books }) {
 
     return (
         <div id="table-box">
+            <div id="admin-button-container">
+                <button className="admin-button">Update Book</button>
+                <button className="admin-button">Add Book</button>
+                <button className="admin-button">Delete Book</button>
+            </div>
             <div id="table-container">
                 <table>
                     <tr>
