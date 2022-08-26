@@ -15,15 +15,13 @@ function NavBar({ userAuthorized, setUserAuthorized, setAdminAuthorized, adminAu
         <div className="topnav">
             {adminAuthorized ? <Link onClick={() => setShowCurrentBook(false)} to="/admin">Admin</Link> : <Link onClick={() => setShowCurrentBook(false)} to="/">Home</Link>}
             {adminAuthorized ? <Link onClick={() => setShowCurrentBook(false)} to="/Books">User's View</Link> : <Link onClick={() => setShowCurrentBook(false)} to="/Books">Books</Link>}
+            <Search />
             {userAuthorized ? (<Link to="/" onClick={handleOnClick}>Logout</Link>) : (
                 <div>
                     <Link to="/login">Log In</Link>
                     <Link to="/signup">Sign Up</Link>
                 </div>
-
-            )}
-
-            <Search />
+            )}    
         </div>
     )
 }
