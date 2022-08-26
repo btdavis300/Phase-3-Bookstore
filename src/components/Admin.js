@@ -1,9 +1,9 @@
 import React, { useState } from 'react'
 import AdminBookTable from './AdminBookTable'
-
+import { Redirect } from "react-router-dom"
 import './Admin.css'
 
-function Admin({ books, setBooks }) {
+function Admin({ books, setBooks, adminAuthorized }) {
     const [selectedBook, setSelectedBook] = useState({})
     const [showPrice, setShowPrice] = useState(false)
     const [showAdd, setShowAdd] = useState(false)
@@ -12,7 +12,7 @@ function Admin({ books, setBooks }) {
         name: "",
         author: "",
         genre: "",
-        published_date: 0,
+        published_date: "",
         price: 0,
         image: "",
         description: ""
@@ -60,17 +60,36 @@ function Admin({ books, setBooks }) {
 
     }
 
-    function handleAdd() {
+    function handleAdd(e) {
+            e.preventDefault();
+              fetch("http://localhost:9292/books/new_books", {
+                method: "POST",
+                headers: {
+                  "Content-Type": "application/json",
+                },
+                body: JSON.stringify({
+                    name: addForm.name,
+                    author: addForm.author,
+                    genre: addForm.genre,
+                    cart: false,
+                    favorite: false,
+                    ebook: false,
+                    published_date: addForm.published_date,
+                    price: addForm.price,
+                    image: addForm.image,
+                    description: addForm.description
+                }),
+              })
         setShowAdd(false)
     }
 
-    function handleAddForm(event) {
-        setAddForm({
-            ...addForm,
-            [event.target.name]: event.target.value
-        })
-        console.log(addForm)
-    }
+    // function handleAddForm(event) {
+    //     setAddForm({
+    //         ...addForm,
+    //         [event.target.name]: event.target.value
+    //     })
+    //     console.log(addForm)
+    // }
 
     function handleUpdatePriceForm(event) {
         setNewPrice({
@@ -78,6 +97,9 @@ function Admin({ books, setBooks }) {
             [event.target.name]: event.target.value
         })
         console.log(newPrice)
+    }
+    if(!adminAuthorized){
+        return <Redirect to={'/login'} />
     }
 
     return (
@@ -106,31 +128,31 @@ function Admin({ books, setBooks }) {
                             <div className="form-inner">
                                 <label>Book Title</label>
                                 <div className="form-group">
-                                    <input type="text" name="name" placeholder="Book Title" onChange={handleAddForm} />
+                                    <input type="text" name="name" placeholder="Book Title" onChange={e => setAddForm({ ...addForm, name: e.target.value })} value={addForm.name} />
                                 </div>
                                 <label>Book Author</label>
                                 <div className="form-group">
-                                    <input type="text" name="author" placeholder="Book Author" onChange={handleAddForm} />
+                                    <input type="text" name="author" placeholder="Book Author" onChange={e => setAddForm({ ...addForm, author: e.target.value })} value={addForm.author} />
                                 </div>
                                 <label>Book Genre</label>
                                 <div className="form-group">
-                                    <input type="text" name="genre" placeholder="Book Genre" onChange={handleAddForm} />
+                                    <input type="text" name="genre" placeholder="Book Genre" onChange={e => setAddForm({ ...addForm, genre: e.target.value })} value={addForm.genre} />
                                 </div>
                                 <label>Published Date</label>
                                 <div className="form-group">
-                                    <input type="number" name="published_date" placeholder="Published Date" onChange={handleAddForm} />
+                                    <input type="number" name="published_date" placeholder="Published Date" onChange={e => setAddForm({ ...addForm, published_date: e.target.value })} value={addForm.published_date} />
                                 </div>
                                 <label>Price</label>
                                 <div className="form-group">
-                                    <input type="text" name="price" placeholder="Book Price" onChange={handleAddForm} />
+                                    <input type="text" name="price" placeholder="Book Price" onChange={e => setAddForm({ ...addForm, price: e.target.value })} value={addForm.price} />
                                 </div>
                                 <label>Image Link</label>
                                 <div className="form-group">
-                                    <input type="text" name="image" placeholder="Image URL" onChange={handleAddForm} />
+                                    <input type="text" name="image" placeholder="Image URL" onChange={e => setAddForm({ ...addForm, image: e.target.value })} value={addForm.image} />
                                 </div>
                                 <label>Description</label>
                                 <div className="form-group">
-                                    <input type="text" name="description" placeholder="description" onChange={handleAddForm} />
+                                    <input type="text" name="description" placeholder="description" onChange={e => setAddForm({ ...addForm, description: e.target.value })} value={addForm.description} />
                                 </div>
                                 < input type="submit" value="Submit Book" />
                             </div>
