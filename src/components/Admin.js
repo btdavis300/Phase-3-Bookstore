@@ -12,7 +12,7 @@ function Admin({ books, setBooks, adminAuthorized }) {
         name: "",
         author: "",
         genre: "",
-        published_date: "",
+        published_date: 0,
         price: 0,
         image: "",
         description: ""

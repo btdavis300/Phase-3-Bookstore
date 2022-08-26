@@ -18,6 +18,7 @@ function Home({ onHandleDisplay, userAuthorized }) {
             .then(bookArr => setPopularBooks(bookArr))
     }, [])
 
+
     const newBookCard = newBooks.map((book) => {
         return (
             <BookCard book={book} key={`newBook${book.id}`} onHandleDisplay={onHandleDisplay} />
@@ -26,9 +27,15 @@ function Home({ onHandleDisplay, userAuthorized }) {
 
     const popularBookCard = popularBooks.map((book) => {
         return (
-            <BookCard book={book} key={`popularBook${book.id}`} onHandleDisplay={onHandleDisplay} />
+            <BookCard book={book} key={book.id} onHandleDisplay={onHandleDisplay} />
         )
     })
+
+    // const popularBookCard = popularBooks.map((book) => {
+    //     return (
+    //         <BookCard book={book}  onHandleDisplay={onHandleDisplay} />
+    //     )
+    // })
 
     return (
         <div>
