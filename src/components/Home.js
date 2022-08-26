@@ -39,7 +39,7 @@ function Home({ onHandleDisplay, userAuthorized }) {
                     </div>
                     {userAuthorized ? null :
                         <div id="store-intro">
-                            <p>Welcome to Flatty's Books, an exclusive online membership book collection, curatated by Flatty himself! Create an account to gain access to his entire collection.</p>
+                            <p>Welcome to Flatty's Books, an exclusive online membership book collection, curated by Flatty himself! Create an account to gain access to his entire collection.</p>
                         </div>
                     }
                 </div>

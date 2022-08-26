@@ -1,9 +1,15 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import BookCard from './BookCard'
 import "./BookNav.css"
 
-function BookNav({ onHandleDisplay }) {
+function BookNav({ onHandleDisplay, userAuthorized }) {
     const [category, setCategory] = useState([])
+
+    useEffect(() => {
+        fetch("http://localhost:9292/books/limit")
+            .then(r => r.json())
+            .then(data => setCategory(data))
+    }, [])
 
     function handleSubcategory(e) {
         if (e.target.textContent.includes("/")) {
@@ -71,7 +77,12 @@ function BookNav({ onHandleDisplay }) {
                     <button id="ebooks" onClick={handleSubcategory}>eBooks</button>
                 </div>
             </div>
-            <div id='book-container'>{bookResults}</div>
+            <div id='book-container'>
+                {/* {userAuthorized ? */}
+                {bookResults}
+                {/* :
+                    <p>Please Login To View Books</p>} */}
+            </div>
         </div>
 
     )

@@ -55,3 +55,15 @@
     padding: 10px;
     margin-left: 41px;
 }
+
+#reviews-container {
+    margin: 20px;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+}
+
+#review-box {
+    display: flex;
+    justify-content: center;
+}
