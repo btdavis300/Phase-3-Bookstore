@@ -61,35 +61,30 @@ function Admin({ books, setBooks, adminAuthorized }) {
     }
 
     function handleAdd(e) {
-            e.preventDefault();
-              fetch("http://localhost:9292/books/new_books", {
-                method: "POST",
-                headers: {
-                  "Content-Type": "application/json",
-                },
-                body: JSON.stringify({
-                    name: addForm.name,
-                    author: addForm.author,
-                    genre: addForm.genre,
-                    cart: false,
-                    favorite: false,
-                    ebook: false,
-                    published_date: addForm.published_date,
-                    price: addForm.price,
-                    image: addForm.image,
-                    description: addForm.description
-                }),
-              })
+        e.preventDefault();
+        const newBook = {
+            name: addForm.name,
+            author: addForm.author,
+            genre: addForm.genre,
+            cart: false,
+            favorite: false,
+            ebook: false,
+            published_date: addForm.published_date,
+            price: addForm.price,
+            image: addForm.image,
+            description: addForm.description
+        }
+        fetch("http://localhost:9292/books/new_books", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify(newBook),
+        })
+        setBooks([...books, newBook])
         setShowAdd(false)
-    }
 
-    // function handleAddForm(event) {
-    //     setAddForm({
-    //         ...addForm,
-    //         [event.target.name]: event.target.value
-    //     })
-    //     console.log(addForm)
-    // }
+    }
 
     function handleUpdatePriceForm(event) {
         setNewPrice({
@@ -98,7 +93,7 @@ function Admin({ books, setBooks, adminAuthorized }) {
         })
         console.log(newPrice)
     }
-    if(!adminAuthorized){
+    if (!adminAuthorized) {
         return <Redirect to={'/login'} />
     }
 
