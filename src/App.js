@@ -18,6 +18,7 @@ function App() {
   const [adminAuthorized, setAdminAuthorized] = useState(false);
   const [currentBook, setCurrentBook] = useState({})
   const [showCurrentBook, setShowCurrentBook] = useState(false);
+  const [searchTerm, setSearchTerm] = useState("");
 
 
   function HandleDisplay(clickedBook) {
@@ -31,6 +32,10 @@ function App() {
       .then(bookArr => setBooks(bookArr))
   }, [])
 
+  const displayedBooks = books.filter((book) => {
+    return book.name.toLowerCase().includes(searchTerm.toLowerCase());
+  });
+
   return (
     <div className="App">
       <NavBar
@@ -39,6 +44,8 @@ function App() {
         adminAuthorized={adminAuthorized}
         setAdminAuthorized={setAdminAuthorized}
         setShowCurrentBook={setShowCurrentBook}
+        onSearchChange={setSearchTerm}
+        searchTerm={searchTerm}
 
       />
       <div id="nav">
@@ -49,7 +56,7 @@ function App() {
               <Home onHandleDisplay={HandleDisplay} userAuthorized={userAuthorized} />}
           </Route>
           <Route exact path="/admin">
-            <Admin books={books} setBooks={setBooks} adminAuthorized={adminAuthorized} />
+            <Admin books={displayedBooks} setBooks={setBooks} adminAuthorized={adminAuthorized} />
           </Route>
           <Route exact path="/books">
             {showCurrentBook ?
