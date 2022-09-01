@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import BookCard from './BookCard'
+import { Link } from "react-router-dom";
 
 
 function Home({ onHandleDisplay, userAuthorized }) {
@@ -46,7 +47,7 @@ function Home({ onHandleDisplay, userAuthorized }) {
                     </div>
                     {userAuthorized ? null :
                         <div id="store-intro">
-                            <p>Welcome to Flatty's Books, an exclusive online membership book collection, curatated by Flatty himself! Create an account to gain access to his entire collection.</p>
+                            <p id="home-intro">Welcome to Flatty's Books, an exclusive online membership book collection, curatated by Flatty himself! <Link to="/signup">Create an account</Link> to gain access to his entire collection.</p>
                         </div>
                     }
                 </div>

@@ -79,6 +79,16 @@ body {
 
 /* Home Page Styling */
 
+#home-intro a {
+  color: rgb(158, 172, 161);
+  text-decoration: none;
+  font-weight: bold;
+}
+
+#home-intro a:hover {
+  color: black;
+}
+
 #book-store-name {
   text-align: center;
   font-size: 8em;
